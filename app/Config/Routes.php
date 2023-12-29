@@ -26,5 +26,16 @@ $routes->group('dashboard', ['filter' => 'adminFilter'], function ($routes) {
 
 
 $routes->group('user', function ($routes) {
+    $routes->get('/', 'user\AuthController::index');
+    $routes->post('login', 'user\AuthController::auth');
+    $routes->get('register', 'user\AuthController::register');
     $routes->get('dashboard', 'user\DashboardController::index');
+    $routes->get('pesan-tiket', 'user\PesanTiketController::index');
+    $routes->get('pesan-tiket/success/(:any)', 'user\PesanTiketController::success/$1');
+    $routes->post('pesan-tiket/update', 'user\PesanTiketController::update');
+    $routes->post('pesan-tiket', 'user\PesanTiketController::store');
+    $routes->post('pesan-tiket/cek', 'user\PesanTiketController::cekTiket');
+
+    $routes->get('riwayat', 'user\RiwayatController::index');
+    $routes->get('riwayat/tiket/(:any)', 'user\RiwayatController::tiket/$1');
 });
