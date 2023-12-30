@@ -88,7 +88,7 @@
                             <a href="<?= base_url('dashboard/buat-tiket') ?>" class="nav-link"><i class="fas fa-ticket-alt"></i> <span>Buat Tiket</span></a>
                         </li>
                         <li class="dropdown <?= ($title == 'Pemesanan Tiket' ? 'active' : '') ?>">
-                            <a href="#" class="nav-link"><i class="fas fa-cart-plus"></i> <span>Pemesanan Tiket</span></a>
+                            <a href="<?= base_url('dashboard/pemesanan-tiket') ?>" class="nav-link"><i class="fas fa-cart-plus"></i> <span>Pemesanan Tiket</span></a>
                         </li>
                         <li class="menu-header">Informasi</li>
                         <li class="dropdown <?= ($title == 'Artikel' ? 'active' : '') ?>">

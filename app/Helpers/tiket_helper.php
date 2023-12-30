@@ -4,36 +4,34 @@ use App\Models\BuatTiketModel;
 
 function generateNoTiket()
 {
-    // 1. ambil tahun, bulan, tanggal
+    date_default_timezone_set('Asia/Jakarta');
+    // 1. Ambil tahun, bulan, tanggal
     $tahun = date('Y');
     $bulan = date('m');
     $tanggal = date('d');
 
-    // 2. ambil urutan dari database
+    // 2. Ambil urutan dari database
     $buatTiketModel = new BuatTiketModel();
-    // jika data kosong, maka urutan = 0001
-    $urutan = $buatTiketModel->orderBy('id', 'DESC')->first();
+    $latestRecord = $buatTiketModel->orderBy('id', 'DESC')->first();
 
-    if ($urutan == null) {
-        $urutan = '0001';
-        $noTiket = $tanggal . $bulan . $tahun  . $urutan;
+    if ($latestRecord == null) {
+        // Jika data kosong, maka urutan = 1
+        $urutan = 1;
     } else {
-        // jika data tidak kosong, maka urutan = urutan + 1
-        $urutan = $urutan['no_tiket'] + 1;
-        // jika urutan < 10, maka urutan = 000$urutan
-        if ($urutan < 10) {
-            $urutan = '000' . $urutan;
-        } else if ($urutan < 100) {
-            // jika urutan < 100, maka urutan = 00$urutan
-            $urutan = '00' . $urutan;
-        } else if ($urutan < 1000) {
-            // jika urutan < 1000, maka urutan = 0$urutan
-            $urutan = '0' . $urutan;
-        }
-        $noTiket = $urutan;
-    }
-    // 3. gabungkan semua string
+        // Ambil urutan dari nomor tiket terakhir
+        $lastNoTiket = $latestRecord['no_tiket'];
 
+        // Ambil nilai urutan dari nomor tiket terakhir
+        $lastUrutan = (int)substr($lastNoTiket, -4);
+
+        // Jika urutan kurang dari 9999, tambahkan 1, jika tidak, set ulang ke 1
+        $urutan = ($lastUrutan < 9999) ? $lastUrutan + 1 : 1;
+    }
+
+    // Format urutan menjadi string dengan panjang 4 karakter (0001, 0010, dst.)
+    $formattedUrutan = str_pad($urutan, 4, '0', STR_PAD_LEFT);
+
+    $noTiket = $tanggal . $bulan . $tahun . $formattedUrutan;
 
     return $noTiket;
 }

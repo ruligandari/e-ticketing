@@ -115,12 +115,12 @@ class PesanTiketController extends BaseController
         $no_tiket = $this->request->getVar('no_tiket');
         $file = $this->request->getFile('bukti_pembayaran');
         $namaFile = $file->getRandomName();
-        $file->move('uploads/bukti-pembayaran');
+        $file->move('uploads/bukti-pembayaran', $namaFile);
 
         $buatTiketModel = new BuatTiketModel();
         $data = [
             'upload_bukti' => $namaFile,
-            'status_pemesanan' => 'menunggu konfirmasi',
+            'status_pemesanan' => 'Menunggu Konfirmasi',
         ];
         $buatTiketModel->update($id, $data);
 

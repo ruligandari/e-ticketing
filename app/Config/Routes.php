@@ -22,6 +22,9 @@ $routes->group('dashboard', ['filter' => 'adminFilter'], function ($routes) {
     $routes->post('hapus-buat-tiket', 'admin\BuatTiketController::delete');
 
     $routes->get('cetak-tiket/(:any)', 'admin\CetakTiket::index/$1');
+
+    $routes->get('pemesanan-tiket', 'admin\PemesananTiketController::index');
+    $routes->post('pemesanan-tiket', 'admin\PemesananTiketController::update');
 });
 
 

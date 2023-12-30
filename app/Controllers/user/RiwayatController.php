@@ -10,7 +10,7 @@ class RiwayatController extends BaseController
     {
         $id = session()->get('id');
         $buatTiketModel = new \App\Models\BuatTiketModel();
-        $dataBuatTiket = $buatTiketModel->where('nama_pemesan', $id)->findAll();
+        $dataBuatTiket = $buatTiketModel->where('nama_pemesan', $id)->orderBy('id', 'DESC')->findAll();
         $data = [
             'title' => 'Riwayat Pemesanan Tiket',
             'data' => $dataBuatTiket,

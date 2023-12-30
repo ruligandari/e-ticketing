@@ -28,22 +28,26 @@
     </script>
 <?php endif ?>
 <div class="section mt-4">
-    <ul class="listview image-listview">
-        <?php foreach ($data as $item) : ?>
-            <li>
-                <a href="<?= base_url('user/riwayat/tiket/' . $item['id']) ?>" class="item">
-                    <div class="in">
-                        <div>
-                            <header>No Tiket: <?= $item['no_tiket'] ?></header>
-                            <?= $item['jenis_tiket'] ?>
-                            <footer>X <?= $item['qty'] ?></footer>
+    <?php if (!$data) : ?>
+        <p>Belum ada riwayat pembelian tiket</p>
+    <?php else : ?>
+        <ul class="listview image-listview">
+            <?php foreach ($data as $item) : ?>
+                <li>
+                    <a href="<?= base_url('user/riwayat/tiket/' . $item['id']) ?>" class="item">
+                        <div class="in">
+                            <div>
+                                <header>No Tiket: <?= $item['no_tiket'] ?></header>
+                                <?= $item['jenis_tiket'] ?>
+                                <footer>X <?= $item['qty'] ?></footer>
+                            </div>
+                            <span class="text-muted"><?= $item['status_pemesanan'] ?></span>
                         </div>
-                        <span class="text-success"><?= $item['status_pemesanan'] ?></span>
-                    </div>
-                </a>
-            </li>
-        <?php endforeach ?>
-    </ul>
+                    </a>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    <?php endif ?>
 </div>
 <?= $this->endSection(); ?>
 <?= $this->section('script'); ?>

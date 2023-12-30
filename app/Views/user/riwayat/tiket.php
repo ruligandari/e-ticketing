@@ -70,8 +70,7 @@
             </tr>
         </table>
         <hr>
-        <h5>Terima Kasih Atas Kunjunganya</h5>
-        <h5>Di Wisata Tirta Sumber Jaya Cipangalun</h5>
+        <h5>Tunjukan tiket ini ke loket</h5>
     </center>
 </div>
 <?= $this->endSection(); ?>

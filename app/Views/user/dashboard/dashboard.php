@@ -26,7 +26,7 @@
                 </div>
                 <div class="item-menu text-center">
                     <div class="menu-icon">
-                        <a href="" class="danger" style="font-size: 40px;">
+                        <a href="<?= base_url('user/pesan-tiket') ?>" class="danger" style="font-size: 40px;">
                             <ion-icon name="ticket-outline"></ion-icon>
                         </a>
                     </div>
@@ -85,7 +85,7 @@
                 <strong>Today</strong>
             </div>
         </a> -->
-        <a href="#" class="item active">
+        <a href="<?= base_url('user/dashboard') ?>" class="item active">
             <div class="col">
                 <ion-icon name="home-outline" role="img" class="md hydrated" aria-label="calendar outline"></ion-icon>
                 <strong>Home</strong>
