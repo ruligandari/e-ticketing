@@ -25,6 +25,9 @@ $routes->group('dashboard', ['filter' => 'adminFilter'], function ($routes) {
 
     $routes->get('pemesanan-tiket', 'admin\PemesananTiketController::index');
     $routes->post('pemesanan-tiket', 'admin\PemesananTiketController::update');
+
+    $routes->get('scan-tiket', 'admin\ScanTiketController::index');
+    $routes->post('scan-tiket', 'admin\ScanTiketController::scan');
 });
 
 

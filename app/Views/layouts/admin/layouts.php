@@ -79,7 +79,7 @@
                         </li>
                         <li class="menu-header">Tiket</li>
                         <li class="dropdown <?= ($title == 'Scan Tiket' ? 'active' : '') ?>">
-                            <a href="#" class="nav-link" data-toggle="dropdown"><i class="fas fa-qrcode"></i> <span>Scan Tiket</span></a>
+                            <a href="<?= base_url('dashboard/scan-tiket') ?>" class="nav-link"><i class="fas fa-qrcode"></i> <span>Scan Tiket</span></a>
                         </li>
                         <li class="dropdown <?= ($title == 'Kelola Tiket' ? 'active' : '') ?>">
                             <a href="<?= base_url('dashboard/kelola-tiket'); ?>" class="nav-link"><i class="fas fa-cog"></i> <span>Kelola Tiket</span></a>
