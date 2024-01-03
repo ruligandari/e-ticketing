@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\BuatTiketModel;
 use App\Models\TiketModel;
 
-class BuatTIketController extends BaseController
+class BuatTiketController extends BaseController
 {
     public function index()
     {
