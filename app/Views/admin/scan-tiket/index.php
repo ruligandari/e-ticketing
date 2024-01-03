@@ -114,42 +114,65 @@
     var berhasil = document.getElementById('berhasil');
 
 
+    var isScanned = false; // Variable untuk memeriksa apakah pemindaian sudah dilakukan
+
     function onScanSuccess(decodedText, decodedResult) {
-        // Handle on success condition with the decoded text or result.
-        console.log(`Scan result: ${decodedText}`);
-        // ajax untuk mengirim decodedText ke controller
-        $.ajax({
-            type: 'POST',
-            url: '<?= base_url('dashboard/scan-tiket') ?>',
-            data: {
-                no_tiket: decodedText
-            },
-            success: function(response) {
-                console.log(response.status)
-                if (response.status == 'success') {
-                    enkripsi.innerHTML = decodedText;
-                    tglPembelian.innerHTML = response.data.tgl_pembelian;
-                    noTiket.innerHTML = response.data.no_tiket;
-                    tglReservasi.innerHTML = response.data.tgl_reservasi;
-                    statusPemesanan.innerHTML = response.data.status_pemesanan;
-                    jenisTiket.innerHTML = response.data.jenis_tiket;
-                    qty.innerHTML = response.data.qty;
-                    hargaTotal.innerHTML = response.data.harga_total;
-                    berhasil.innerHTML = "Tiket Valid";
-                } else {
+        if (!isScanned) {
+            isScanned = true; // Setel bahwa pemindaian sudah dilakukan
+
+            console.log(`Scan result: ${decodedText}`);
+
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url('dashboard/scan-tiket') ?>',
+                data: {
+                    no_tiket: decodedText
+                },
+                success: function(response) {
+                    console.log(response.status);
+                    if (response.status === 'success') {
+                        enkripsi.innerHTML = decodedText;
+                        tglPembelian.innerHTML = response.data.tgl_pembelian;
+                        noTiket.innerHTML = response.data.no_tiket;
+                        tglReservasi.innerHTML = response.data.tgl_reservasi;
+                        statusPemesanan.innerHTML = response.data.status_pemesanan;
+                        jenisTiket.innerHTML = response.data.jenis_tiket;
+                        qty.innerHTML = response.data.qty;
+                        hargaTotal.innerHTML = response.data.harga_total;
+                        berhasil.innerHTML = "Tiket Valid";
+
+                        // Setelah menampilkan hasil, atur timeout untuk memungkinkan pemindaian berikutnya setelah 3 detik
+                        setTimeout(function() {
+                            isScanned = false; // Setelah 3 detik, izinkan pemindaian berikutnya
+                        }, 1000);
+                    } else {
+                        Swal.fire({
+                            title: "Gagal!",
+                            text: "Nomor Tiket Tidak Ditemukan.",
+                            icon: "error"
+                        });
+
+                        // Setelah menampilkan pesan kesalahan, atur timeout untuk memungkinkan pemindaian berikutnya setelah 3 detik
+                        setTimeout(function() {
+                            isScanned = false; // Setelah 3 detik, izinkan pemindaian berikutnya
+                        }, 1000);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", xhr.responseText);
                     Swal.fire({
                         title: "Gagal!",
-                        text: "Nomor Tiket Tidak Ditemukan.",
+                        text: "Terjadi kesalahan saat memproses data.",
                         icon: "error"
                     });
-                }
-            },
-            error: function(xhr, status, error) {
-                // Handle kesalahan Ajax (jika diperlukan)
-                console.error(xhr.responseText);
-            }
-        })
 
+                    // Setelah menampilkan pesan kesalahan, atur timeout untuk memungkinkan pemindaian berikutnya setelah 3 detik
+                    setTimeout(function() {
+                        isScanned = false; // Setelah 3 detik, izinkan pemindaian berikutnya
+                    }, 3000);
+                }
+            });
+        }
     }
 
     var html5QrcodeScanner = new Html5QrcodeScanner(
@@ -157,49 +180,10 @@
             fps: 10,
             qrbox: 250,
         }, {
-            facingMode: "environment",
-            // single shoot
-            delay: 10000,
+            facingMode: "user",
+            formatsToSupport: ["QR_CODE"],
         });
 
     html5QrcodeScanner.render(onScanSuccess);
-
-    $(document).ready(function() {
-        $('.delete').on('click', function() {
-            var id = $(this).data('id')
-            Swal.fire({
-                title: "Apakah Pembayaran Sudah Valid?",
-                text: "Anda tidak dapat mengulangi Konfirmasi!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Ya, Konfirmasi",
-                cancelButtonText: "Batal"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '<?= base_url('dashboard/pemesanan-tiket') ?>',
-                        data: {
-                            id: id
-                        },
-                        success: function(response) {
-                            console.log(response.status)
-                            Swal.fire({
-                                title: "Berhasil!",
-                                text: "Pembayaran Telah di Konfirmasi",
-                                icon: "success"
-                            }).then(() => location.reload());
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle kesalahan Ajax (jika diperlukan)
-                            console.error(xhr.responseText);
-                        }
-                    })
-                }
-            });
-        })
-    });
 </script>
 <?= $this->endSection(); ?>

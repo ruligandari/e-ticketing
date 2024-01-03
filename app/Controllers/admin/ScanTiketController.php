@@ -19,20 +19,29 @@ class ScanTiketController extends BaseController
     {
         $tiketModel = new \App\Models\BuatTiketModel();
         $no_tiket = $this->request->getVar('no_tiket');
-        $tiketEncoded = base64_decode($no_tiket);
-        $tiket = $tiketModel->where('no_tiket', $tiketEncoded)->first();
-        if ($tiket) {
-            $data = [
-                'status' => 'success',
-                'data' => $tiket
-            ];
-        } else {
+        try {
+            $tiketEncoded = base64_decode($no_tiket);
+            $tiket = $tiketModel->where('no_tiket', $tiketEncoded)->first();
+            if ($tiket) {
+                $data = [
+                    'status' => 'success',
+                    'data' => $tiket
+                ];
+            } else {
+                $data = [
+                    'status' => 'error',
+                    'data' => null
+                ];
+            }
+
+            return $this->response->setJSON($data);
+        } catch (\Throwable $th) {
             $data = [
                 'status' => 'error',
                 'data' => null
             ];
-        }
 
-        return $this->response->setJSON($data);
+            return $this->response->setJSON($data);
+        }
     }
 }
