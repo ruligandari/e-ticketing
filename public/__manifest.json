@@ -1,7 +1,7 @@
 {
-    "name": "Mobilekit",
-    "short_name": "Mobilekit",
-    "start_url": "http://localhost:8080/user",
+    "name": "E-Tiket Waterboom Tirta Sumber Jaya Cipanglun",
+    "short_name": "E-Tiket",
+    "start_url": "https://e-tiket.kapanitu.my.id/user/",
     "display": "standalone",
     "scope" : "/",
     "background_color": "#000000",
