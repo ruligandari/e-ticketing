@@ -91,8 +91,8 @@
                             <a href="<?= base_url('dashboard/pemesanan-tiket') ?>" class="nav-link"><i class="fas fa-cart-plus"></i> <span>Pemesanan Tiket</span></a>
                         </li>
                         <li class="menu-header">Informasi</li>
-                        <li class="dropdown <?= ($title == 'Artikel' ? 'active' : '') ?>">
-                            <a href="#" class="nav-link"><i class="fas fa-newspaper"></i> <span>Artikel</span></a>
+                        <li class="dropdown <?= ($title == 'Informasi' ? 'active' : '') ?>">
+                            <a href="<?= base_url('dashboard/artikel') ?>" class="nav-link"><i class="fas fa-newspaper"></i> <span>Artikel</span></a>
                         </li>
                     </ul>
                 </aside>
@@ -128,6 +128,7 @@
     <script src="<?= base_url() ?>/admin/modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
     <script src="<?= base_url() ?>/admin/modules/summernote/summernote-bs4.js"></script>
     <script src="<?= base_url() ?>/admin/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+
 
     <?= $this->renderSection('script'); ?>
 

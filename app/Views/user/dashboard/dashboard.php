@@ -61,17 +61,18 @@
 <div class="section mt-2" id="presence-section">
     <div class="todaypresence">
         <h3>Informasi</h3>
-        <div class="card mb-3">
-            <img src="<?= base_url() ?>/assets/img/sample/photo/wide4.jpg" class="card-img-top" alt="image">
-            <div class="card-body">
-                <h6 class="card-subtitle">Informasi</h6>
-                <h5 class="card-title">Waterbook Ciamis</h5>
-                <p class="card-text">
-                    Waterboom Terbaik di Indonesia
-                </p>
-                <a href="app-components.html" class="btn btn-primary">
-                    Lihat Selengkapnya
-                </a>
+        <div class="section full mt-3 mb-3">
+            <div class="carousel-multiple owl-carousel owl-theme">
+                <div class="item">
+                    <a href="<?= base_url('user/blog/') ?>">
+                        <div class="card">
+                            <img src="<?= base_url() ?>/assets/img/sample/photo/vector4.png" class="card-img-top" alt="image">
+                            <div class="card-body pt-2">
+                                <h5 class="mb-0">Pemesanan Tiket Sudah Bisa Dilakukan Secara Online</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 

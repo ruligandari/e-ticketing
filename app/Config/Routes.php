@@ -28,6 +28,10 @@ $routes->group('dashboard', ['filter' => 'adminFilter'], function ($routes) {
 
     $routes->get('scan-tiket', 'admin\ScanTiketController::index');
     $routes->post('scan-tiket', 'admin\ScanTiketController::scan');
+
+    $routes->get('artikel', 'admin\ArtikelController::index');
+    $routes->get('artikel/tambah', 'admin\ArtikelController::create');
+    $routes->post('artikel', 'admin\ArtikelController::save');
 });
 
 
