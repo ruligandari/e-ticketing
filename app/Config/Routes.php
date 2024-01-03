@@ -48,4 +48,5 @@ $routes->group('user', function ($routes) {
 
     $routes->get('riwayat', 'user\RiwayatController::index');
     $routes->get('riwayat/tiket/(:any)', 'user\RiwayatController::tiket/$1');
+    $routes->get('blog/(:any)', 'user\BlogController::index/$1');
 });

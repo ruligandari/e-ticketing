@@ -63,16 +63,18 @@
         <h3>Informasi</h3>
         <div class="section full mt-3 mb-3">
             <div class="carousel-multiple owl-carousel owl-theme">
-                <div class="item">
-                    <a href="<?= base_url('user/blog/') ?>">
-                        <div class="card">
-                            <img src="<?= base_url() ?>/assets/img/sample/photo/vector4.png" class="card-img-top" alt="image">
-                            <div class="card-body pt-2">
-                                <h5 class="mb-0">Pemesanan Tiket Sudah Bisa Dilakukan Secara Online</h5>
+                <?php foreach ($artikel as $item) : ?>
+                    <div class="item">
+                        <a href="<?= base_url('user/blog/' . $item['slug']) ?>">
+                            <div class="card">
+                                <img src="<?= base_url('uploads/artikel/' . $item['gambar']) ?>" class="card-img-top" alt="image">
+                                <div class="card-body pt-2">
+                                    <h5 class="mb-0"><?= $item['judul'] ?></h5>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                <?php endforeach ?>
             </div>
         </div>
 
