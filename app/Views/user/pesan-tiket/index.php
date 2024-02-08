@@ -101,7 +101,11 @@
                     console.log(formatted);
                     document.getElementById('harga').value = formatted;
                     document.getElementById('id_tiket').value = data.dataTiket[0]['id'];
-                    var isHoliday = document.getElementById('isHoliday').innerHTML = "Hari Libur: " + data.infoHariLibur;
+                    if (data.infoHariLibur) {
+                        var isHoliday = document.getElementById('isHoliday').innerHTML = "Hari Libur " + data.infoHariLibur;
+                    } else {
+                        var isHoliday = document.getElementById('isHoliday').innerHTML = "";
+                    }
                 },
                 error: function() {
                     alert('Terjadi kesalahan saat mengirim data.');
