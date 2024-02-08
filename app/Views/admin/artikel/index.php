@@ -57,7 +57,7 @@
                                             <td><?= $item['tanggal'] ?></td>
                                             <td><?= $item['judul'] ?></td>
                                             <td>
-                                                <button class="btn btn-primary">Edit</button>
+                                                <a href="<?= base_url('dashboard/artikel/show/' . $item['id']) ?>" class="btn btn-primary">Edit</a>
                                                 <button class="btn btn-danger delete" data-id="<?= $item['id'] ?>">Delete</button>
                                             </td>
                                         </tr>
@@ -86,7 +86,7 @@
         $('.delete').on('click', function() {
             var id = $(this).data('id')
             Swal.fire({
-                title: "Apakah Pembayaran Sudah Valid?",
+                title: "Apakah Anda Yakin?",
                 text: "Anda tidak dapat mengulangi Konfirmasi!",
                 icon: "warning",
                 showCancelButton: true,
@@ -98,7 +98,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: 'POST',
-                        url: '<?= base_url('dashboard/pemesanan-tiket') ?>',
+                        url: '<?= base_url('dashboard/delete-artikel') ?>',
                         data: {
                             id: id
                         },
@@ -106,7 +106,7 @@
                             console.log(response.status)
                             Swal.fire({
                                 title: "Berhasil!",
-                                text: "Pembayaran Telah di Konfirmasi",
+                                text: response.messages,
                                 icon: "success"
                             }).then(() => location.reload());
                         },

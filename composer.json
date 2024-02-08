@@ -12,6 +12,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
+        "holidayapi/holidayapi-php": "^4.0",
         "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {

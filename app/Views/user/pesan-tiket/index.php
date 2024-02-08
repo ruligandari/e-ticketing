@@ -58,6 +58,7 @@
                         </i>
                     </div>
                 </div>
+                <span id="isHoliday"></span>
                 <div class="form-button-group">
                     <button type="submit" class="btn btn-primary btn-block btn-lg">Pesan Tiket</button>
                 </div>
@@ -82,6 +83,7 @@
                     tanggal: tanggalValue
                 },
                 success: function(response) {
+                    console.log(response);
                     var data = JSON.parse(response);
                     // Menampilkan inputan baru dengan nilai dari server
                     document.getElementById('tiket').value = data.dataTiket[0]['nama'];
@@ -99,6 +101,7 @@
                     console.log(formatted);
                     document.getElementById('harga').value = formatted;
                     document.getElementById('id_tiket').value = data.dataTiket[0]['id'];
+                    var isHoliday = document.getElementById('isHoliday').innerHTML = "Hari Libur: " + data.infoHariLibur;
                 },
                 error: function() {
                     alert('Terjadi kesalahan saat mengirim data.');

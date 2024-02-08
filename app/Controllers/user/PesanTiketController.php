@@ -33,19 +33,42 @@ class PesanTiketController extends BaseController
 
     public function cekTiket()
     {
+        $json_url = 'https://raw.githubusercontent.com/guangrei/APIHariLibur_V2/main/calendar.json';
+        $json = file_get_contents($json_url);
+
+        // Mengubah JSON menjadi array asosiatif
+        $data = json_decode($json, true);
+
         $tanggal = $this->request->getVar('tanggal');
         $tiketModel = new TiketModel();
         // ambil data $tanggal hanya hari saja
         $hari = date('l', strtotime($tanggal));
-        // cek hari ini weekend atau bukan
-        if ($hari == 'Saturday' || $hari == 'Sunday') {
-            $hari = 'weekend';
+        $dateNow = date('Y-m-d', strtotime($tanggal));
+        $isHoliday = '';
+        $infoHariLibur = '';
+        // Memeriksa apakah ada entri dengan tanggal yang cocok dengan tanggal saat ini
+        if (isset($data[$dateNow])) {
+            // Jika ditemukan, tampilkan informasi hari libur
+            $holidayInfo = $data[$dateNow];
+            // cek apakah holiday = true
+            if ($holidayInfo['holiday'] == true) {
+                $isHoliday = 'weekend';
+                $infoHariLibur = $holidayInfo['summary'];
+            } else {
+                // Jika tidak ditemukan, tampilkan pesan bahwa tidak ada is$isHoliday libur
+                $isHoliday = 'weekday';
+            }
+        } else if ($hari == 'Saturday' || $hari == 'Sunday') {
+            // Jika tidak ditemukan, tampilkan pesan bahwa tidak ada hari libur
+            $isHoliday = 'weekend';
+            $infoHariLibur = 'Weekend';
         } else {
-            $hari = 'weekday';
+            $isHoliday = 'weekday';
         }
         // return ke javascript
         $data = [
-            'dataTiket' => $tiketModel->where('jenis_tiket', $hari)->findAll(),
+            'dataTiket' => $tiketModel->where('jenis_tiket', $isHoliday)->findAll(),
+            'infoHariLibur' => $infoHariLibur,
         ];
         echo json_encode($data);
     }

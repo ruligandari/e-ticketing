@@ -30,8 +30,11 @@ $routes->group('dashboard', ['filter' => 'adminFilter'], function ($routes) {
     $routes->post('scan-tiket', 'admin\ScanTiketController::scan');
 
     $routes->get('artikel', 'admin\ArtikelController::index');
+    $routes->get('artikel/show/(:any)', 'admin\ArtikelController::show/$1');
+    $routes->post('artikel/update', 'admin\ArtikelController::update');
     $routes->get('artikel/tambah', 'admin\ArtikelController::create');
     $routes->post('artikel', 'admin\ArtikelController::save');
+    $routes->post('delete-artikel', 'admin\ArtikelController::delete');
 });
 
 
