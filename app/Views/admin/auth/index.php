@@ -63,6 +63,7 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="password">Password</label>
                                         <input id="password" type="password" name="password" placeholder="Masukan Password" class="form-control" name="password" tabindex="2" required>
                                         <div class="invalid-feedback">
                                             Masukan Password

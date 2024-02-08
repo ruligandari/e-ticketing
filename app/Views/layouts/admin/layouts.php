@@ -50,11 +50,11 @@
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="<?= base_url() ?>admin/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Admin</div>
+                            <div class="d-sm-none d-lg-inline-block"><?= session()->get('nama') ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="features-settings.html" class="dropdown-item has-icon">
-                                <i class="fas fa-cog"></i> Settings
+                            <a href="<?= base_url('dashboard/setting') ?>" class="dropdown-item has-icon">
+                                <i class="fas fa-cog"></i> Pengaturan Akun
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="<?= base_url('logout') ?>" class="dropdown-item has-icon text-danger">
@@ -89,6 +89,9 @@
                         </li>
                         <li class="dropdown <?= ($title == 'Pemesanan Tiket' ? 'active' : '') ?>">
                             <a href="<?= base_url('dashboard/pemesanan-tiket') ?>" class="nav-link"><i class="fas fa-cart-plus"></i> <span>Pemesanan Tiket</span></a>
+                        </li>
+                        <li class="dropdown <?= ($title == 'Laporan' ? 'active' : '') ?>">
+                            <a href="<?= base_url('dashboard/laporan') ?>" class="nav-link"><i class="fas fa-clipboard"></i> <span>Laporan</span></a>
                         </li>
                         <li class="menu-header">Informasi</li>
                         <li class="dropdown <?= ($title == 'Informasi' ? 'active' : '') ?>">

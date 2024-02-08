@@ -20,6 +20,7 @@ $routes->group('dashboard', ['filter' => 'adminFilter'], function ($routes) {
     $routes->get('buat-tiket', 'admin\BuatTiketController::index');
     $routes->post('buat-tiket', 'admin\BuatTiketController::store');
     $routes->post('hapus-buat-tiket', 'admin\BuatTiketController::delete');
+    $routes->post('list-tiket', 'admin\BuatTiketController::listTiket');
 
     $routes->get('cetak-tiket/(:any)', 'admin\CetakTiket::index/$1');
 
@@ -35,6 +36,11 @@ $routes->group('dashboard', ['filter' => 'adminFilter'], function ($routes) {
     $routes->get('artikel/tambah', 'admin\ArtikelController::create');
     $routes->post('artikel', 'admin\ArtikelController::save');
     $routes->post('delete-artikel', 'admin\ArtikelController::delete');
+
+    $routes->get('laporan', 'admin\LaporanController::index');
+
+    $routes->get('setting', 'admin\SettingController::index');
+    $routes->post('setting', 'admin\SettingController::update');
 });
 
 

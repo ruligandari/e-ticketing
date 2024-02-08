@@ -79,4 +79,20 @@ class BuatTiketController extends BaseController
 
         return redirect()->to(base_url('dashboard/buat-tiket'))->with('success', 'Berhasil menghapus data tiket');
     }
+
+    public function listTiket()
+    {
+        $start = $this->request->getVar('start');
+        $end = $this->request->getVar('end');
+
+        // menambahkan date $start menjadi datetime ex: 02-02-2021 00:00:00
+        $startDateTimes = date('Y-m-d H:i:s', strtotime($start));
+        $endDateTimes = date('Y-m-d H:i:s', strtotime($end));
+
+        $buatTiketModel = new BuatTiketModel();
+        // bandingkan data
+        $data = $buatTiketModel->where('tgl_pembelian >=', $startDateTimes)->where('tgl_pembelian <=', $endDateTimes)->findAll();
+
+        return json_encode($data);
+    }
 }
