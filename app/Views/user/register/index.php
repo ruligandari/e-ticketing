@@ -47,13 +47,18 @@
             <div class="section">
                 <h2>Registrasi</h2>
                 <h4>Silahkan isi data dibawah ini</h4>
+                <!-- alert -->
+                <?php if (session()->getFlashdata('error')) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= session()->getFlashdata('error') ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="section mt-2 mb-5">
-                <form action="app-pages.html">
-
+                <form action="<?= base_url('user/register') ?>" method="POST">
                     <div class="form-group boxed">
-                        <div class="input-wrapper">
-                            <input type="email" name="nama" class="form-control" id="name1" placeholder="Nama Lengkap">
+                        <div class="input-wrapper ">
+                            <input type="text" name="nama" value="<?= old('nama') ?>" class="form-control" id="name1" placeholder="Nama Lengkap" required>
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
@@ -62,7 +67,7 @@
 
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="email" name="email" class="form-control" id="email1" placeholder="Alamat Email">
+                            <input type="email" name="email" value="<?= old('email') ?>" class="form-control" id="email1" placeholder="Alamat Email" required>
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
@@ -71,7 +76,7 @@
 
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="password" name="password" class="form-control" id="password1" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="password1" placeholder="Password" required>
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
@@ -80,7 +85,7 @@
 
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="password" name="confirm_password" class="form-control" id="password2" placeholder="Konfirmasi Password">
+                            <input type="password" name="confirm_password" class="form-control" id="password2" placeholder="Konfirmasi Password" required>
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>

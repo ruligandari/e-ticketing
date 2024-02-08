@@ -15,6 +15,11 @@
                 <?= session()->getFlashdata('error'); ?>
             </div>
         <?php endif; ?>
+        <?php if (session()->getFlashdata('success')) : ?>
+            <div class="alert alert-success mb-1" role="alert">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
         <form action="<?= base_url('user/login') ?>" method="post">
             <div class="form-group boxed">
                 <div class="input-wrapper">

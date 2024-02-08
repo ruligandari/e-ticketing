@@ -38,15 +38,20 @@ $routes->group('dashboard', ['filter' => 'adminFilter'], function ($routes) {
 $routes->group('user', function ($routes) {
     $routes->get('/', 'user\AuthController::index');
     $routes->post('login', 'user\AuthController::auth');
+    $routes->get('logout', 'user\AuthController::logout');
     $routes->get('register', 'user\AuthController::register');
-    $routes->get('dashboard', 'user\DashboardController::index');
-    $routes->get('pesan-tiket', 'user\PesanTiketController::index');
-    $routes->get('pesan-tiket/success/(:any)', 'user\PesanTiketController::success/$1');
-    $routes->post('pesan-tiket/update', 'user\PesanTiketController::update');
-    $routes->post('pesan-tiket', 'user\PesanTiketController::store');
-    $routes->post('pesan-tiket/cek', 'user\PesanTiketController::cekTiket');
+    $routes->post('register', 'user\AuthController::registrasi');
+    // setelah login
+    $routes->get('dashboard', 'user\DashboardController::index', ['filter' => 'userFilter']);
+    $routes->get('pesan-tiket', 'user\PesanTiketController::index', ['filter' => 'userFilter']);
+    $routes->get('pesan-tiket/success/(:any)', 'user\PesanTiketController::success/$1', ['filter' => 'userFilter']);
+    $routes->post('pesan-tiket/update', 'user\PesanTiketController::update', ['filter' => 'userFilter']);
+    $routes->post('pesan-tiket', 'user\PesanTiketController::store', ['filter' => 'userFilter']);
+    $routes->post('pesan-tiket/cek', 'user\PesanTiketController::cekTiket', ['filter' => 'userFilter']);
 
-    $routes->get('riwayat', 'user\RiwayatController::index');
-    $routes->get('riwayat/tiket/(:any)', 'user\RiwayatController::tiket/$1');
-    $routes->get('blog/(:any)', 'user\BlogController::index/$1');
+    $routes->get('riwayat', 'user\RiwayatController::index', ['filter' => 'userFilter']);
+    $routes->get('riwayat/tiket/(:any)', 'user\RiwayatController::tiket/$1', ['filter' => 'userFilter']);
+    $routes->get('blog/(:any)', 'user\BlogController::index/$1', ['filter' => 'userFilter']);
+
+    $routes->get('profile', 'user\ProfileController::index', ['filter' => 'userFilter']);
 });

@@ -16,7 +16,7 @@
             <div class="list-menu">
                 <div class="item-menu text-center">
                     <div class="menu-icon">
-                        <a href="" class="green" style="font-size: 40px;">
+                        <a href="<?= base_url('user/profile') ?>" class="green" style="font-size: 40px;">
                             <ion-icon name="person-sharp"></ion-icon>
                         </a>
                     </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="item-menu text-center">
                     <div class="menu-icon">
-                        <a href="" class="orange" style="font-size: 40px;">
+                        <a href="<?= base_url('user/info-aplikasi') ?>" class="orange" style="font-size: 40px;">
                             <ion-icon name="information-circle-outline"></ion-icon>
                         </a>
                     </div>
@@ -101,13 +101,7 @@
                 </div>
             </div>
         </a>
-        <!-- <a href="#" class="item">
-            <div class="col">
-                <ion-icon name="document-text-outline" role="img" class="md hydrated" aria-label="document text outline"></ion-icon>
-                <strong>Docs</strong>
-            </div>
-        </a> -->
-        <a href="javascript:;" class="item">
+        <a href="<?= base_url('user/profile') ?>" class="item">
             <div class="col">
                 <ion-icon name="people-outline" role="img" class="md hydrated" aria-label="people outline"></ion-icon>
                 <strong>Profile</strong>
