@@ -54,4 +54,5 @@ $routes->group('user', function ($routes) {
     $routes->get('blog/(:any)', 'user\BlogController::index/$1', ['filter' => 'userFilter']);
 
     $routes->get('profile', 'user\ProfileController::index', ['filter' => 'userFilter']);
+    $routes->get('info-aplikasi', 'user\InfoAplikasiController::index', ['filter' => 'userFilter']);
 });
