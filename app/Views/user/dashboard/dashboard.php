@@ -62,7 +62,7 @@
     <div class="todaypresence">
         <h3>Informasi</h3>
         <div class="section full mt-3 mb-3">
-            <div class="carousel-multiple owl-carousel owl-theme">
+            <div class="carousel-slider owl-carousel owl-theme">
                 <?php foreach ($artikel as $item) : ?>
                     <div class="item">
                         <a href="<?= base_url('user/blog/' . $item['slug']) ?>">
