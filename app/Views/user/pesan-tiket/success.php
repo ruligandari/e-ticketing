@@ -23,7 +23,7 @@
             title: 'Berhasil',
             text: '<?= session()->getFlashdata('success') ?>',
         }).then((result) => {
-            window.location.href = "<?= base_url('user/riwayat') ?>";
+            window.location.href = "<?= base_url('user/dashboard') ?>";
         });
     </script>
 <?php endif ?>
