@@ -46,7 +46,7 @@
                                         <td><span id="enkripsi"></span></td>
                                     </tr>
                                     <tr>
-                                        <td>No Tiket</td>
+                                        <td>Nomor Tiket</td>
                                         <td>:</td>
                                         <td><span id="no_tiket"></span></td>
                                     </tr>

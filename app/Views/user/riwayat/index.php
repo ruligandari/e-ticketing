@@ -38,6 +38,7 @@
                         <div class="in">
                             <div>
                                 <header>No Tiket: <?= $item['no_tiket'] ?></header>
+                                <header><?= $item['tgl_pembelian'] ?></header>
                                 <?= $item['jenis_tiket'] ?>
                                 <footer>X <?= $item['qty'] ?></footer>
                             </div>
