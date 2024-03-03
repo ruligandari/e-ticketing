@@ -219,11 +219,12 @@ $('.carousel-small').owlCarousel({
     }
 });
 $('.carousel-slider').owlCarousel({
-    loop: true,
+    loop: false,
     margin: 8,
     nav: false,
     items: 1,
     dots: true,
+    autoplay: true,
 });
 
 ///////////////////////////////////////////////////////////////////////////

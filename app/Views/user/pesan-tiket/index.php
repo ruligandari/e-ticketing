@@ -69,6 +69,21 @@
 <?= $this->endSection(); ?>
 <?= $this->section('script'); ?>
 <script>
+    // Mendapatkan tahun saat ini
+    var now = new Date();
+    var year = now.getFullYear();
+
+    // Mendapatkan tanggal minimum (1 Januari tahun ini)
+    var minDate = year + '-01-01T00:00';
+
+    // Mendapatkan tanggal maksimum (31 Desember tahun ini)
+    var maxDate = year + '-12-31T23:59';
+
+    // Menetapkan nilai min dan max pada input
+    document.getElementById('tanggal').setAttribute('min', minDate);
+    document.getElementById('tanggal').setAttribute('max', maxDate);
+</script>
+<script>
     $('#tanggal').on('input', function() {
         // Mendapatkan nilai tanggal dari elemen input
         var tanggalValue = $(this).val();
