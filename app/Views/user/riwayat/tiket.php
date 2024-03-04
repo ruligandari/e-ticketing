@@ -39,7 +39,7 @@
         <hr>
         <table class="font">
             <tr>
-                <td>No Tiket</td>
+                <td>Nomor Tiket</td>
                 <td>:</td>
                 <td><?= $tiket['no_tiket'] ?></td>
             </tr>
