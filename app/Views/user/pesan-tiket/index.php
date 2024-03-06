@@ -75,20 +75,6 @@
 <?= $this->endSection(); ?>
 <?= $this->section('script'); ?>
 <script>
-    // // Mendapatkan tahun saat ini
-    // var now = new Date();
-    // var year = now.getFullYear();
-
-    // // Mendapatkan tanggal minimum (1 Januari tahun ini)
-    // var minDate = year + '-01-01T00:00';
-
-    // // Mendapatkan tanggal maksimum (31 Desember tahun ini)
-    // var maxDate = year + '-12-31T23:59';
-
-    // // Menetapkan nilai min dan max pada input
-    // document.getElementById('tanggal').setAttribute('min', minDate);
-    // document.getElementById('tanggal').setAttribute('max', maxDate);
-
     flatpickr("#tanggal", {
         minDate: "today", // membatasi pemilihan tanggal mulai dari hari ini
         dateFormat: "Y-m-d", // format tanggal yang disimpan di dalam input
@@ -99,6 +85,9 @@
 </script>
 <script>
     $('#tanggal').on('input', function() {
+        // Menampilkan pesan "cek ketersediaan tiket" saat AJAX sedang memuat data
+        $('#harga').attr('placeholder', 'Cek Ketersediaan Tiket...');
+
         // Mendapatkan nilai tanggal dari elemen input
         var tanggalValue = $(this).val();
 
