@@ -44,6 +44,7 @@
                         <i class="clear-input">
                             <ion-icon name="close-circle"></ion-icon>
                         </i>
+                        <div id="isLoading"></div>
                     </div>
                 </div>
                 <div class="form-group boxed">
@@ -85,8 +86,10 @@
 </script>
 <script>
     $('#tanggal').on('input', function() {
-        // Menampilkan pesan "cek ketersediaan tiket" saat AJAX sedang memuat data
-        $('#harga').attr('placeholder', 'Cek Ketersediaan Tiket...');
+        // dapatkan id isLoading
+        var isLoading = document.getElementById('isLoading');
+        // tampilkan cek keterseidaan tiket
+        isLoading.innerHTML = '<span> Cek Ketersediaan Tiket ....</span>';
 
         // Mendapatkan nilai tanggal dari elemen input
         var tanggalValue = $(this).val();
@@ -102,6 +105,8 @@
                 },
                 success: function(response) {
                     console.log(response);
+                    // hilangkan loading
+                    isLoading.innerHTML = '';
                     var data = JSON.parse(response);
                     // Menampilkan inputan baru dengan nilai dari server
                     document.getElementById('tiket').value = data.dataTiket[0]['nama'];
