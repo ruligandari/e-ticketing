@@ -1,5 +1,11 @@
 <?= $this->extend('layouts/user/layouts'); ?>
 
+<?= $this->section('header'); ?>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<?= $this->endSection(); ?>
+
 <?= $this->section('navigation'); ?>
 <!-- App Header -->
 <div class="appHeader bg-primary text-light">
@@ -69,19 +75,27 @@
 <?= $this->endSection(); ?>
 <?= $this->section('script'); ?>
 <script>
-    // Mendapatkan tahun saat ini
-    var now = new Date();
-    var year = now.getFullYear();
+    // // Mendapatkan tahun saat ini
+    // var now = new Date();
+    // var year = now.getFullYear();
 
-    // Mendapatkan tanggal minimum (1 Januari tahun ini)
-    var minDate = year + '-01-01T00:00';
+    // // Mendapatkan tanggal minimum (1 Januari tahun ini)
+    // var minDate = year + '-01-01T00:00';
 
-    // Mendapatkan tanggal maksimum (31 Desember tahun ini)
-    var maxDate = year + '-12-31T23:59';
+    // // Mendapatkan tanggal maksimum (31 Desember tahun ini)
+    // var maxDate = year + '-12-31T23:59';
 
-    // Menetapkan nilai min dan max pada input
-    document.getElementById('tanggal').setAttribute('min', minDate);
-    document.getElementById('tanggal').setAttribute('max', maxDate);
+    // // Menetapkan nilai min dan max pada input
+    // document.getElementById('tanggal').setAttribute('min', minDate);
+    // document.getElementById('tanggal').setAttribute('max', maxDate);
+
+    flatpickr("#tanggal", {
+        minDate: "today", // membatasi pemilihan tanggal mulai dari hari ini
+        dateFormat: "Y-m-d", // format tanggal yang disimpan di dalam input
+        onChange: function(selectedDates, dateStr, instance) {
+            document.getElementById("tanggal").value = dateStr; // menyimpan tanggal yang dipilih di dalam input
+        }
+    });
 </script>
 <script>
     $('#tanggal').on('input', function() {

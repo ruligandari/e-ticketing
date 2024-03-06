@@ -81,6 +81,12 @@ class PesanTiketController extends BaseController
         $id_pengunjung = $this->request->getVar('id_pengunjung');
         $jumlah = $this->request->getVar('jumlah');
 
+        // timezone Asia/Jakarta
+        date_default_timezone_set('Asia/Jakarta');
+        // format tanggal
+        $time = date('H:i:s');
+        // gabungkan tanggal dan waktu
+        $tanggal = $tanggal . $time;
         // format tanggal menjadi datetime sesuai dengan database
         $tanggal = date('Y-m-d H:i:s', strtotime($tanggal));
 
