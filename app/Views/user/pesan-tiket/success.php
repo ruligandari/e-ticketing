@@ -34,7 +34,7 @@
             <p class="text-bold">BRI : 34532323232323</p>
             <p class="text-bold">BCA : 34532323232323</p>
             <p class="text-bold">Total Pembayaran: <b>Rp. <?= number_format($dataTiket['harga_total'], 0, ',', '.') ?></b></p>
-            <p class="text-bold">Admin Kami Akan melakukan validasi paling lambat 1x24 jam, status pembelian bisa dibuka pada menu histori</p>
+            <p class="text-bold">Admin Kami Akan melakukan validasi paling lambat 1x24 jam, status pembelian bisa dibuka pada menu Riwayat</p>
             <form action="<?= base_url('user/pesan-tiket/update') ?>" method="post" enctype="multipart/form-data">
                 <input type="text" name="id" value="<?= $dataTiket['id'] ?>" hidden>
                 <input type="text" name="no_tiket" value="<?= $dataTiket['no_tiket'] ?>" hidden>

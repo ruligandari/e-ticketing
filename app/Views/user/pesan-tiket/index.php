@@ -59,7 +59,7 @@
                 <div class="form-group boxed">
                     <div class="input-wrapper">
                         <label class="label" for="name5">Jumlah Tiket</label>
-                        <input type="number" class="form-control" name="jumlah" id="name5" placeholder="Masukan Jumlah Tiket" required>
+                        <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Masukan Jumlah Tiket" required>
                         <i class="clear-input">
                             <ion-icon name="close-circle"></ion-icon>
                         </i>
@@ -67,7 +67,14 @@
                 </div>
                 <span id="isHoliday"></span>
                 <div class="form-button-group">
-                    <button type="submit" class="btn btn-primary btn-block btn-lg">Pesan Tiket</button>
+                    <div class="row d-flex">
+                        <div class="col-12">
+                            <h3>Total : <span id="total_harga">0</span></h3>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Pesan Tiket</button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -138,6 +145,21 @@
             // Handle jika tanggal kosong (opsional)
             $('#hasil').html('');
         }
+    });
+
+    $('#jumlah').on('input', function() {
+        var jumlah = $(this).val();
+        var harga = document.getElementById('harga').value;
+        var hargaInt = parseInt(harga.replace(/[^0-9]/g, ''));
+        var total = jumlah * hargaInt;
+        var formatted = total.toLocaleString('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+            useGrouping: true
+        });
+        document.getElementById('total_harga').innerHTML = formatted;
     });
 </script>
 <?= $this->endSection(); ?>
