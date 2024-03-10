@@ -13,7 +13,7 @@ class LaporanController extends BaseController
 
         $data = [
             'title' => 'Laporan',
-            'buatTiket' => $buatTiketModel->where('status_pemesanan <>', 'Menunggu Konfirmasi')->orderBy('id', 'DESC')->findAll(),
+            'buatTiket' => $buatTiketModel->where('status_pemesanan <>', 'Menunggu Konfirmasi')->where('status_pemesanan <>', 'pending')->orderBy('id', 'DESC')->findAll(),
         ];
 
         return view('admin/laporan/index', $data);

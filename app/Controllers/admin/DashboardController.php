@@ -13,7 +13,7 @@ class DashboardController extends BaseController
 
         $totalTiket = $buatTiketModel->countAll();
         // total pengunjung = status_pemesanan = 'valid/Valid' kemudian jumlahkan qty
-        $totalPengunjung = $buatTiketModel->selectSum('qty')->where('status_pemesanan', 'valid')->first();
+        $totalPengunjung = $buatTiketModel->selectSum('qty')->where('status_pemesanan', 'valid')->where('reservasi', 1)->first();
 
         $totalPendapatan = $buatTiketModel->selectSum('harga_total')->where('status_pemesanan', 'valid')->first();
         $data = [

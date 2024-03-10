@@ -66,15 +66,9 @@
                     </div>
                 </div>
                 <span id="isHoliday"></span>
+                <h3 class="mt-2">Total : <span id="total_harga">0</span></h3>
                 <div class="form-button-group">
-                    <div class="row d-flex">
-                        <div class="col-12">
-                            <h3>Total : <span id="total_harga">0</span></h3>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg">Pesan Tiket</button>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Pesan Tiket</button>
                 </div>
             </form>
         </div>

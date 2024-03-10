@@ -81,7 +81,7 @@
                                         <td><span id="harga_total"></span></td>
                                     </tr>
                                 </table>
-                                <div class="alert alert-success mt-3" role="alert">
+                                <div id="alert-scan" role="alert">
                                     <center>
                                         <h6 class="alert-heading" id="berhasil"></h6>
                                     </center>
@@ -112,6 +112,7 @@
     var qty = document.getElementById('qty');
     var hargaTotal = document.getElementById('harga_total');
     var berhasil = document.getElementById('berhasil');
+    var alert = document.getElementById('alert-scan');
 
 
     var isScanned = false; // Variable untuk memeriksa apakah pemindaian sudah dilakukan
@@ -131,6 +132,11 @@
                 success: function(response) {
                     console.log(response.status);
                     if (response.status === 'success') {
+                        Swal.fire({
+                            title: "Berhasil!",
+                            text: "Tiket Valid",
+                            icon: "success"
+                        });
                         enkripsi.innerHTML = decodedText;
                         tglPembelian.innerHTML = response.data.tgl_pembelian;
                         noTiket.innerHTML = response.data.no_tiket;
@@ -140,6 +146,8 @@
                         qty.innerHTML = response.data.qty;
                         hargaTotal.innerHTML = response.data.harga_total;
                         berhasil.innerHTML = "Tiket Valid";
+                        // berhasil ganti class menjadi alert-danger
+                        alert.classList.add("alert", "alert-success", "mt-3");
 
                         // Setelah menampilkan hasil, atur timeout untuk memungkinkan pemindaian berikutnya setelah 3 detik
                         setTimeout(function() {
@@ -148,9 +156,21 @@
                     } else {
                         Swal.fire({
                             title: "Gagal!",
-                            text: "Nomor Tiket Tidak Ditemukan.",
+                            text: response.message,
                             icon: "error"
                         });
+
+                        enkripsi.innerHTML = decodedText;
+                        tglPembelian.innerHTML = '';
+                        noTiket.innerHTML = '';
+                        tglReservasi.innerHTML = '';
+                        statusPemesanan.innerHTML = '';
+                        jenisTiket.innerHTML = '';
+                        qty.innerHTML = '';
+                        hargaTotal.innerHTML = '';
+                        berhasil.innerHTML = "Tiket Tidak Valid";
+                        alert.classList.add("alert", "alert-danger", "mt-3");
+
 
                         // Setelah menampilkan pesan kesalahan, atur timeout untuk memungkinkan pemindaian berikutnya setelah 3 detik
                         setTimeout(function() {

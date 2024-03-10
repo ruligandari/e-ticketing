@@ -84,6 +84,12 @@ class PesanTiketController extends BaseController
         // timezone Asia/Jakarta
         date_default_timezone_set('Asia/Jakarta');
         // format tanggal
+        // tanggal sekarang
+        $date = date('Y-m-d');
+        if ($date === $tanggal) {
+            // tambah 1 hari
+            $tanggal = date('Y-m-d', strtotime($date . ' +1 day'));
+        }
         $time = date('H:i:s');
         // gabungkan tanggal dan waktu
         $tanggal = $tanggal . $time;
