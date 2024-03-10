@@ -72,32 +72,42 @@
                     <div class="sidebar-brand sidebar-brand-sm">
                         <a href="index.html">ET</a>
                     </div>
-                    <ul class="sidebar-menu">
-                        <li class="menu-header">Dashboard</li>
-                        <li class="dropdown <?= ($title == 'Dashboard' ? 'active' : '') ?>">
-                            <a href="<?= base_url('dashboard') ?>" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                        </li>
-                        <li class="menu-header">Tiket</li>
-                        <li class="dropdown <?= ($title == 'Scan Tiket' ? 'active' : '') ?>">
-                            <a href="<?= base_url('dashboard/scan-tiket') ?>" class="nav-link"><i class="fas fa-qrcode"></i> <span>Scan Tiket</span></a>
-                        </li>
-                        <li class="dropdown <?= ($title == 'Kelola Tiket' ? 'active' : '') ?>">
-                            <a href="<?= base_url('dashboard/kelola-tiket'); ?>" class="nav-link"><i class="fas fa-cog"></i> <span>Kelola Tiket</span></a>
-                        </li>
-                        <li class="dropdown <?= ($title == 'Buat Tiket' ? 'active' : '') ?>">
-                            <a href="<?= base_url('dashboard/buat-tiket') ?>" class="nav-link"><i class="fas fa-ticket-alt"></i> <span>Buat Tiket</span></a>
-                        </li>
-                        <li class="dropdown <?= ($title == 'Pemesanan Tiket' ? 'active' : '') ?>">
-                            <a href="<?= base_url('dashboard/pemesanan-tiket') ?>" class="nav-link"><i class="fas fa-cart-plus"></i> <span>Pemesanan Tiket</span></a>
-                        </li>
-                        <li class="dropdown <?= ($title == 'Laporan' ? 'active' : '') ?>">
-                            <a href="<?= base_url('dashboard/laporan') ?>" class="nav-link"><i class="fas fa-clipboard"></i> <span>Laporan</span></a>
-                        </li>
-                        <li class="menu-header">Informasi</li>
-                        <li class="dropdown <?= ($title == 'Informasi' ? 'active' : '') ?>">
-                            <a href="<?= base_url('dashboard/artikel') ?>" class="nav-link"><i class="fas fa-newspaper"></i> <span>Artikel</span></a>
-                        </li>
-                    </ul>
+                    <?php if (session()->get('role') == 1) : ?>
+                        <ul class="sidebar-menu">
+                            <li class="menu-header">Dashboard</li>
+                            <li class="dropdown <?= ($title == 'Dashboard' ? 'active' : '') ?>">
+                                <a href="<?= base_url('dashboard') ?>" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                            </li>
+                            <li class="menu-header">Tiket</li>
+                            <li class="dropdown <?= ($title == 'Scan Tiket' ? 'active' : '') ?>">
+                                <a href="<?= base_url('dashboard/scan-tiket') ?>" class="nav-link"><i class="fas fa-qrcode"></i> <span>Scan Tiket</span></a>
+                            </li>
+                            <li class="dropdown <?= ($title == 'Kelola Tiket' ? 'active' : '') ?>">
+                                <a href="<?= base_url('dashboard/kelola-tiket'); ?>" class="nav-link"><i class="fas fa-cog"></i> <span>Kelola Tiket</span></a>
+                            </li>
+                            <li class="dropdown <?= ($title == 'Buat Tiket' ? 'active' : '') ?>">
+                                <a href="<?= base_url('dashboard/buat-tiket') ?>" class="nav-link"><i class="fas fa-ticket-alt"></i> <span>Buat Tiket</span></a>
+                            </li>
+                            <li class="dropdown <?= ($title == 'Pemesanan Tiket' ? 'active' : '') ?>">
+                                <a href="<?= base_url('dashboard/pemesanan-tiket') ?>" class="nav-link"><i class="fas fa-cart-plus"></i> <span>Pemesanan Tiket</span></a>
+                            </li>
+                            <li class="menu-header">Informasi</li>
+                            <li class="dropdown <?= ($title == 'Informasi' ? 'active' : '') ?>">
+                                <a href="<?= base_url('dashboard/artikel') ?>" class="nav-link"><i class="fas fa-newspaper"></i> <span>Artikel</span></a>
+                            </li>
+                        </ul>
+                    <?php else : ?>
+                        <ul class="sidebar-menu">
+                            <li class="menu-header">Dashboard</li>
+                            <li class="dropdown <?= ($title == 'Dashboard' ? 'active' : '') ?>">
+                                <a href="<?= base_url('dashboard') ?>" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                            </li>
+                            <li class="menu-header">Laporan</li>
+                            <li class="dropdown <?= ($title == 'Laporan' ? 'active' : '') ?>">
+                                <a href="<?= base_url('dashboard/laporan') ?>" class="nav-link"><i class="fas fa-clipboard"></i> <span>Laporan</span></a>
+                            </li>
+                        </ul>
+                    <?php endif; ?>
                 </aside>
             </div>
 

@@ -29,6 +29,7 @@ class AuthController extends BaseController
                     'id' => $admin['id'],
                     'nama' => $admin['nama'],
                     'username' => $admin['username'],
+                    'role' => $admin['role'], // 1 = admin, 2 = manager
                     'logged_in' => true
                 ];
                 session()->set($data);

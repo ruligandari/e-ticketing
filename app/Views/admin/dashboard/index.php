@@ -61,13 +61,19 @@
                     </div>
                     <div class="card-body">
                         <!-- alert -->
-
-                        <div class="alert alert-primary" role="alert">
-                            <h4 class="alert-heading">Selamat Datang!</h4>
-                            <p>Selamat datang di halaman dashboard, anda dapat melihat data penjualan tiket dan data pengunjung.</p>
-                            <hr>
-                            <p class="mb-0"> Anda bisa membuat tiket secara langsung, dan melakukan scan tiket untuk pembelian tiket via aplikasi</p>
-                        </div>
+                        <?php if (session()->get('role') == 1) : ?>
+                            <div class="alert alert-primary" role="alert">
+                                <h4 class="alert-heading">Selamat Datang!</h4>
+                                <p>Selamat datang di halaman dashboard, anda dapat melihat data penjualan tiket dan data pengunjung.</p>
+                                <hr>
+                                <p class="mb-0"> Anda bisa membuat tiket secara langsung, dan melakukan scan tiket untuk pembelian tiket via aplikasi</p>
+                            </div>
+                        <?php else : ?>
+                            <div class="alert alert-primary" role="alert">
+                                <h4 class="alert-heading">Selamat Datang!</h4>
+                                <p>Selamat datang di halaman dashboard, anda dapat melihat Laporan penjuala tiket pengunjung.</p>
+                            </div>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>

@@ -74,7 +74,7 @@
                                             <td><?= $item['jenis_tiket'] ?></td>
                                             <td><?= date('Y-m-d', strtotime($item['tgl_pembelian'])) ?></td>
                                             <td><?= $item['qty'] ?></td>
-                                            <td><?= number_format($item['harga_total'], 0, '.', ',') ?></td>
+                                            <td><?= number_format($item['harga_total'], 0, ',', '.') ?></td>
                                         </tr>
 
                                     <?php endforeach ?>
