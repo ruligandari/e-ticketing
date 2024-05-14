@@ -1,0 +1,6 @@
+Login phpmyadmin hosting
+
+Url: https://server.hostdata.id/phpMyAdmin/index.php
+
+Username: kapanitu_tiketing
+Password : tiketing
